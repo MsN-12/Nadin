@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dxbP/nh7NJs9G5sNJ41VjQJ30b7Zx1cGUvIdrtUIOcJQfJla7aJvKMrHs+87BH1w0siq0hbCOXQGfxgu1NqBeQ==",
+  "dgSpecHash": "fsXdQ14pnHEtP98XASqQBbN+ZW6rJW3JMPUXLjVnTAyWPC4WN4jbnaoFAKO0XrwSmXm3/7rc0YTWKO+tD2d6XA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.WebAPI\\Nadin.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.6\\microsoft.entityframeworkcore.8.0.6.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.6\\microsoft.entityframeworkcore.abstractions.8.0.6.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.6\\microsoft.entityframeworkcore.analyzers.8.0.6.nupkg.sha512",
+    "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\8.0.6\\microsoft.entityframeworkcore.inmemory.8.0.6.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.6\\microsoft.entityframeworkcore.relational.8.0.6.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dqZU05qqUMXL+6k0rBSunbYnZM8qAYdwnSeJLfUZhHg18pofG+Jegh2Bd18OKCWLJ0quNny4fCJX0DLVpMVxnA==",
+  "dgSpecHash": "d8+DzIQQFONipnpKr+ABOhiPjjqIn3Cvvdb77gR52hpl/DAaCJizM/GLyOZVU0pT+F0crnSL0/wARa6dQP0Y8Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Infrastructure\\Nadin.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.6\\microsoft.entityframeworkcore.8.0.6.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.6\\microsoft.entityframeworkcore.abstractions.8.0.6.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.6\\microsoft.entityframeworkcore.analyzers.8.0.6.nupkg.sha512",
+    "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\8.0.6\\microsoft.entityframeworkcore.inmemory.8.0.6.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.6\\microsoft.entityframeworkcore.relational.8.0.6.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.extensions.caching.memory\\8.0.0\\microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
