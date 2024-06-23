@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3OM0LmOPsPTc+Gf1fxlaW+x7LFrHOiBhfVW2VqFm1HeVExUZUrdRVqdsl+p/99nPYXBYTxMcktWGHKTv3dxppg==",
+  "dgSpecHash": "mfDun9jwsp8cX0q+T9eooEA0mlHiOTX+Kj6+in3NuNzkQk+sM2BjsU54Yn11AUk1MoEV0WZi8jNG6rMP0C1v3A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Core\\Nadin.Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Markazi\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.6\\microsoft.aspnetcore.cryptography.internal.8.0.6.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.6\\microsoft.aspnetcore.cryptography.keyderivation.8.0.6.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\8.0.6\\microsoft.aspnetcore.identity.entityframeworkcore.8.0.6.nupkg.sha512",
