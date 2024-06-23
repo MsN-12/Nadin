@@ -1,11 +1,15 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Nadin.Core.Entities;
 
 namespace Nadin.Infrastructure.Data
 {
-    public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext(options)
+    public class AppDbContext : IdentityDbContext
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+        }
         public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

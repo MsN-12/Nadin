@@ -59,6 +59,10 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[7.6.2, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.6.0, )"
@@ -74,6 +78,10 @@
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[4.2.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.6.2, )"
             },
             "coverlet.collector": {
               "target": "Package",
@@ -159,6 +167,14 @@
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[8.0.6, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[7.6.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.6.2, )"
             }
           },
           "imports": [
@@ -233,6 +249,14 @@
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[8.0.6, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[7.6.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.6.2, )"
             }
           },
           "imports": [
@@ -308,9 +332,33 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[7.6.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.6.2, )"
             }
           },
           "imports": [

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FR7nMguqLZnN0KGamLqig6dhDJ8mXA1yR+kUQN3VnD8oUwRU5z/1dbFEG6e42BOSgC+TGUTiFqMlVWlG+5pjnQ==",
+  "dgSpecHash": "HZ3LWFHn5KkDR8vwSPJlCWvCOugXW36RXrb8aAl3LimofrbtGBFOhsCysr0+Nc907p4CbM6hz4YQ3Zc4Caul9Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Core\\Nadin.Core.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,12 @@
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.extensions.logging\\8.0.0\\microsoft.extensions.logging.8.0.0.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
-    "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+    "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.6.2\\microsoft.identitymodel.abstractions.7.6.2.nupkg.sha512",
+    "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.6.2\\microsoft.identitymodel.jsonwebtokens.7.6.2.nupkg.sha512",
+    "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.identitymodel.logging\\7.6.2\\microsoft.identitymodel.logging.7.6.2.nupkg.sha512",
+    "C:\\Users\\Markazi\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.6.2\\microsoft.identitymodel.tokens.7.6.2.nupkg.sha512",
+    "C:\\Users\\Markazi\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.6.2\\system.identitymodel.tokens.jwt.7.6.2.nupkg.sha512"
   ],
   "logs": []
 }

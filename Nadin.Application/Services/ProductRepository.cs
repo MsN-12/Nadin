@@ -41,5 +41,6 @@ namespace Nadin.Application.Services
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
         }
+        
     }
 }
