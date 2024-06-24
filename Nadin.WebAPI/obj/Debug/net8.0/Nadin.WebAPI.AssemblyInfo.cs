@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Nadin.WebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+280b06f0563a533477e685c337a3a7128ad5cde3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c905202375bd05cedbf96922b171e06a0ebf7792")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nadin.WebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nadin.WebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

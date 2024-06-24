@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices.JavaScript;
 using System.Security.Claims;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -45,19 +44,6 @@ namespace Nadin.WebAPI.Controllers
 
             return Ok(product);
         }
-        [HttpGet]
-        [Route("test")]
-        [Authorize]
-        public IActionResult Test()
-        {
-            var user = User.Claims.FirstOrDefault(c => c.Type == "Email")?.Value;
-            var user2 = User.Identity.Name;
-            var user3 = User.FindFirstValue(ClaimTypes.Email);
-            Console.WriteLine("user : " + user);
-            Console.WriteLine("user2 : " + user2);
-            Console.WriteLine("user3 : " + user3);
-            return Ok(user3);
-        }
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Create([FromBody] CreateProductDto createProductDto)
@@ -75,30 +61,35 @@ namespace Nadin.WebAPI.Controllers
             var productDto = _mapper.Map<ProductDto>(product);
             return CreatedAtAction(nameof(GetById), new { id = product.Id }, productDto);
         }
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateProductDto updateProductDto)
         {
+            var emailClaim = User.FindFirstValue(ClaimTypes.Email); 
             var existingProduct = await _productRepository.GetByIdAsync(id);
             if (existingProduct == null)
                 return NotFound();
-
-            if (existingProduct.ManufactureEmail != _userManager.GetUserName(User))
+            
+            if (existingProduct.ManufactureEmail != emailClaim)
                 return Forbid();
 
             _mapper.Map(updateProductDto, existingProduct);
             await _productRepository.UpdateAsync(existingProduct);
     
-            return Ok();
+            return Ok("Product Updated");
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
+            var emailClaim = User.FindFirstValue(ClaimTypes.Email); 
             var existingProduct = await _productRepository.GetByIdAsync(id);
             if (existingProduct == null)
                 return NotFound();
-            if (existingProduct.ManufactureEmail != _userManager.GetUserName(User))
+            
+            if (existingProduct.ManufactureEmail != emailClaim)
                 return Forbid();
+            
             await _productRepository.DeleteAsync(existingProduct);
             return NoContent();
         }}
