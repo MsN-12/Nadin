@@ -1,1 +1,13 @@
-global using NUnit.Framework;
+global using System.Collections.Generic;
+global using System.Security.Claims;
+global using System.Threading.Tasks;
+global using AutoMapper;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Mvc;
+global using Moq;
+global using Xunit;
+global using Nadin.Application.DTOs;
+global using Nadin.Application.Interfaces;
+global using Nadin.Core.Entities;
+global using Nadin.WebAPI.Controllers;

@@ -1,125 +1,186 @@
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Security.Claims;
-using System.Text.Json;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Moq;
-using Nadin.Application.DTOs;
-using Nadin.Application.Interfaces;
-using Nadin.Core.Entities;
-using Nadin.WebAPI;
-using NUnit.Framework;
-
-namespace Integration.Test
+public class ProductsControllerTests
 {
-    public class ProductsControllerIntegrationTests
+    private readonly Mock<IProductRepository> _mockProductRepository;
+    private readonly Mock<IMapper> _mockMapper;
+    private readonly ProductsController _controller;
+
+    public ProductsControllerTests()
     {
-        private WebApplicationFactory<Program> _factory;
-        private HttpClient _client;
+        _mockProductRepository = new Mock<IProductRepository>();
+        _mockMapper = new Mock<IMapper>();
+        _controller = new ProductsController(_mockProductRepository.Object, _mockMapper.Object);
+    }
 
-        [SetUp]
-        public void SetUp()
+    [Fact]
+    public async Task GetAll_ReturnsNoContent_WhenNoProducts()
+    {
+        // Arrange
+        _mockProductRepository.Setup(repo => repo.GetAllAsync()).ReturnsAsync(new List<Product>());
+
+        // Act
+        var result = await _controller.GetAll();
+
+        // Assert
+        Assert.IsType<NoContentResult>(result);
+    }
+
+    [Fact]
+    public async Task GetAll_ReturnsOk_WhenProductsExist()
+    {
+        // Arrange
+        var products = new List<Product> { new Product { Id = 1, Name = "Product1" } };
+        _mockProductRepository.Setup(repo => repo.GetAllAsync()).ReturnsAsync(products);
+
+        // Act
+        var result = await _controller.GetAll();
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        var returnProducts = Assert.IsType<List<Product>>(okResult.Value);
+        Assert.Single(returnProducts);
+    }
+
+    [Fact]
+    public async Task GetById_ReturnsNotFound_WhenProductDoesNotExist()
+    {
+        // Arrange
+        _mockProductRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<int>())).ReturnsAsync((Product)null);
+
+        // Act
+        var result = await _controller.GetById(1);
+
+        // Assert
+        Assert.IsType<NotFoundResult>(result);
+    }
+
+    [Fact]
+    public async Task GetById_ReturnsOk_WhenProductExists()
+    {
+        // Arrange
+        var product = new Product { Id = 1, Name = "Product1" };
+        _mockProductRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(product);
+
+        // Act
+        var result = await _controller.GetById(1);
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        var returnProduct = Assert.IsType<Product>(okResult.Value);
+        Assert.Equal(product.Id, returnProduct.Id);
+    }
+
+    [Fact]
+    public async Task Create_ReturnsBadRequest_WhenModelStateIsInvalid()
+    {
+        // Arrange
+        _controller.ModelState.AddModelError("Name", "Required");
+
+        // Act
+        var result = await _controller.Create(new CreateProductDto());
+
+        // Assert
+        Assert.IsType<BadRequestResult>(result);
+    }
+
+    [Fact]
+    public async Task Create_ReturnsCreatedAtAction_WhenProductIsCreated()
+    {
+        // Arrange
+        var createProductDto = new CreateProductDto { Name = "New Product" };
+        var product = new Product { Id = 1, Name = "New Product" };
+        var productDto = new ProductDto { Id = 1, Name = "New Product" };
+
+        _mockMapper.Setup(m => m.Map<Product>(It.IsAny<CreateProductDto>())).Returns(product);
+        _mockMapper.Setup(m => m.Map<ProductDto>(It.IsAny<Product>())).Returns(productDto);
+        _mockProductRepository.Setup(repo => repo.AddAsync(It.IsAny<Product>())).Returns(Task.CompletedTask);
+        var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[] { new Claim(ClaimTypes.Email, "test@example.com") }, "mock"));
+        _controller.ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext { User = user } };
+
+        // Act
+        var result = await _controller.Create(createProductDto);
+
+        // Assert
+        var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result);
+        var returnProduct = Assert.IsType<ProductDto>(createdAtActionResult.Value);
+        Assert.Equal(productDto.Id, returnProduct.Id);
+    }
+
+    [Fact]
+    public async Task Update_ReturnsBadRequest_WhenModelStateIsInvalid()
+    {
+        // Arrange
+        _controller.ModelState.AddModelError("Name", "Required");
+
+        // Act
+        var result = await _controller.Update(1, new UpdateProductDto());
+
+        // Assert
+        Assert.IsType<BadRequestObjectResult>(result);
+    }
+
+    [Fact]
+    public async Task Update_ReturnsNotFound_WhenProductDoesNotExist()
+    {
+        // Arrange
+        int productId = 1;
+        _mockProductRepository.Setup(repo => repo.GetByIdAsync(productId)).ReturnsAsync((Product)null);
+
+        var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
         {
-            _factory = new WebApplicationFactory<Program>();
-            _client = _factory.CreateClient();
-        }
+            new Claim(ClaimTypes.Email, "test@example.com")
+        }, "mock"));
 
-        [Test]
-        public async Task GetAll_ReturnsOkResult_WithListOfProducts()
+        _controller.ControllerContext = new ControllerContext
         {
-            // Arrange
+            HttpContext = new DefaultHttpContext { User = user }
+        };
 
-            // Act
-            var response = await _client.GetAsync("/api/Products");
+        // Act
+        var result = await _controller.Update(productId, new UpdateProductDto());
 
-            // Assert
-            Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);
-            var responseString = await response.Content.ReadAsStringAsync();
-            var products = JsonSerializer.Deserialize<List<ProductDto>>(responseString);
-            Assert.IsNotNull(products);
-        }
+        // Assert
+        Assert.IsType<NotFoundResult>(result);
+    }
+ 
 
-        [Test]
-        public async Task GetById_ReturnsNotFound_ForInvalidId()
+    [Fact]
+    public async Task Delete_ReturnsNotFound_WhenProductDoesNotExist()
+    {
+        // Arrange
+        _mockProductRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<int>())).ReturnsAsync((Product)null);
+
+        var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
         {
-            // Arrange
-
-            // Act
-            var response = await _client.GetAsync("/api/Products/9999");
-
-            // Assert
-            Assert.AreEqual(System.Net.HttpStatusCode.NotFound, response.StatusCode);
-        }
-
-        [Test]
-        public async Task Create_ReturnsUnauthorized_WhenUserNotAuthenticated()
+            new Claim(ClaimTypes.Email, "test@example.com")
+        }, "mock"));
+    
+        _controller.ControllerContext = new ControllerContext
         {
-            // Arrange
-            var createProductDto = new TestCreateProductDto()
-            {
-                Name = "Test Product",
-                ProduceDate = DateTime.UtcNow,
-                ManufacturePhone = "1234567890",
-                ManufactureEmail = "test@example.com",
-                IsAvailable = true
-            };
+            HttpContext = new DefaultHttpContext { User = user }
+        };
 
-            // Act
-            var response = await _client.PostAsJsonAsync("/api/Products", createProductDto);
+        // Act
+        var result = await _controller.Delete(1);
 
-            // Assert
-            Assert.AreEqual(System.Net.HttpStatusCode.Unauthorized, response.StatusCode);
-        }
+        // Assert
+        Assert.IsType<NotFoundResult>(result);
+    }
+ 
 
-        [Test]
-        public async Task Create_ReturnsCreatedResult_WithValidProduct()
-        {
-            // Arrange
-            var client = _factory.WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureServices(services =>
-                {
-                    // Mock dependencies
-                    var productRepositoryMock = new Mock<IProductRepository>();
-                    productRepositoryMock.Setup(repo => repo.AddAsync(It.IsAny<Product>())).Returns(Task.CompletedTask);
-                    productRepositoryMock.Setup(repo => repo.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(new Product());
+    [Fact]
+    public async Task Delete_ReturnsNoContent_WhenProductIsDeleted()
+    {
+        // Arrange
+        var product = new Product { Id = 1, ManufactureEmail = "test@example.com" };
+        _mockProductRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(product);
+        _mockProductRepository.Setup(repo => repo.DeleteAsync(It.IsAny<Product>())).Returns(Task.CompletedTask);
+        var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[] { new Claim(ClaimTypes.Email, "test@example.com") }, "mock"));
+        _controller.ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext { User = user } };
 
-                    var userManagerMock = new Mock<UserManager<IdentityUser>>(MockBehavior.Default,
-                        new Mock<IUserStore<IdentityUser>>().Object,
-                        null, null, null, null, null, null, null);
+        // Act
+        var result = await _controller.Delete(1);
 
-                    var mapperMock = new Mock<IMapper>();
-
-                    services.AddSingleton(productRepositoryMock.Object);
-                    services.AddSingleton(userManagerMock.Object);
-                    services.AddSingleton(mapperMock.Object);
-                });
-            }).CreateClient();
-
-            var createProductDto = new TestCreateProductDto
-            {
-                Name = "Test Product",
-                ProduceDate = DateTime.UtcNow,
-                ManufacturePhone = "1234567890",
-                ManufactureEmail = "test@example.com",
-                IsAvailable = true
-            };
-
-            // Act
-            var response = await client.PostAsJsonAsync("/api/Products", createProductDto);
-
-            // Assert
-            response.EnsureSuccessStatusCode(); // Status Code 200-299
-            var responseString = await response.Content.ReadAsStringAsync();
-            var productDto = JsonSerializer.Deserialize<ProductDto>(responseString);
-            Assert.IsNotNull(productDto);
-        }
-
-        // Similar tests for Update and Delete can be written following the same pattern.
+        // Assert
+        Assert.IsType<NoContentResult>(result);
     }
 }

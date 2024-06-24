@@ -14,13 +14,11 @@ namespace Nadin.WebAPI.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
-        private readonly UserManager<IdentityUser> _userManager;
         private readonly IMapper _mapper;
 
-        public ProductsController(IProductRepository productRepository, UserManager<IdentityUser> userManager, IMapper mapper)
+        public ProductsController(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
-            _userManager = userManager;
             _mapper = mapper;
         }
 
