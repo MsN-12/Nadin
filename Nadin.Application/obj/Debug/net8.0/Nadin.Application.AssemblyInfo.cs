@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Nadin.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c905202375bd05cedbf96922b171e06a0ebf7792")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f8e6567a743ca7b6e800a3cc657cb4f3adcfb44")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nadin.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nadin.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

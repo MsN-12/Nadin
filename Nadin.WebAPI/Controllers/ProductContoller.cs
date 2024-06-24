@@ -48,6 +48,10 @@ namespace Nadin.WebAPI.Controllers
         [Authorize]
         public async Task<IActionResult> Create([FromBody] CreateProductDto createProductDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             var email = User.FindFirstValue(ClaimTypes.Email);
             if (email == null)
             {
@@ -65,6 +69,11 @@ namespace Nadin.WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateProductDto updateProductDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+                
+            }
             var emailClaim = User.FindFirstValue(ClaimTypes.Email); 
             var existingProduct = await _productRepository.GetByIdAsync(id);
             if (existingProduct == null)
@@ -78,7 +87,7 @@ namespace Nadin.WebAPI.Controllers
     
             return Ok("Product Updated");
         }
-
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

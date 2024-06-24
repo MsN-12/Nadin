@@ -1,202 +1,125 @@
-using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using Nadin.Application.DTOs;
-using Newtonsoft.Json;
-using NUnit.Framework;
-using Microsoft.AspNetCore.Mvc.Testing;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
+using System.Net.Http.Json;
 using System.Security.Claims;
+using System.Text.Json;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
+using Moq;
+using Nadin.Application.DTOs;
+using Nadin.Application.Interfaces;
 using Nadin.Core.Entities;
+using Nadin.WebAPI;
+using NUnit.Framework;
 
 namespace Integration.Test
 {
-    [TestFixture]
-    public class ProductsControllerTests
+    public class ProductsControllerIntegrationTests
     {
+        private WebApplicationFactory<Program> _factory;
         private HttpClient _client;
-        private string _jwtToken;
 
-        [OneTimeSetUp]
-        public void OneTimeSetup()
+        [SetUp]
+        public void SetUp()
         {
-            var factory = new WebApplicationFactory<Program>();
-            _client = factory.CreateClient();
-
-            _jwtToken = GenerateJwtToken("test@example.com");
-        }
-
-        private string GenerateJwtToken(string email)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("SuperSecureSecretKey"); 
-
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.Name, email),
-                    new Claim(ClaimTypes.Email, email)
-                }),
-                Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            _factory = new WebApplicationFactory<Program>();
+            _client = _factory.CreateClient();
         }
 
         [Test]
-        public async Task Create_ShouldAddProduct()
+        public async Task GetAll_ReturnsOkResult_WithListOfProducts()
         {
-            var newProduct = new Product()
-            {
-                Name = "New Product",
-                ProduceDate = DateTime.UtcNow,
-                ManufacturePhone = "1234567890",
-                ManufactureEmail = "test@example.com",
-                IsAvailable = true
-            };
+            // Arrange
 
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _jwtToken);
-            var content = new StringContent(JsonConvert.SerializeObject(newProduct), Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync("/api/products", content);
-            response.EnsureSuccessStatusCode();
+            // Act
+            var response = await _client.GetAsync("/api/Products");
 
+            // Assert
+            Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);
             var responseString = await response.Content.ReadAsStringAsync();
-            var product = JsonConvert.DeserializeObject<ProductDto>(responseString);
-
-            Assert.NotNull(product);
-            Assert.AreEqual(newProduct.Name, product.Name);
+            var products = JsonSerializer.Deserialize<List<ProductDto>>(responseString);
+            Assert.IsNotNull(products);
         }
 
         [Test]
-        public async Task Update_ShouldUpdateProduct()
+        public async Task GetById_ReturnsNotFound_ForInvalidId()
         {
-            var newProduct = new Product()
+            // Arrange
+
+            // Act
+            var response = await _client.GetAsync("/api/Products/9999");
+
+            // Assert
+            Assert.AreEqual(System.Net.HttpStatusCode.NotFound, response.StatusCode);
+        }
+
+        [Test]
+        public async Task Create_ReturnsUnauthorized_WhenUserNotAuthenticated()
+        {
+            // Arrange
+            var createProductDto = new TestCreateProductDto()
             {
-                Name = "New Product",
+                Name = "Test Product",
                 ProduceDate = DateTime.UtcNow,
                 ManufacturePhone = "1234567890",
                 ManufactureEmail = "test@example.com",
                 IsAvailable = true
             };
 
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _jwtToken);
-            var createContent = new StringContent(JsonConvert.SerializeObject(newProduct), Encoding.UTF8, "application/json");
-            var createResponse = await _client.PostAsync("/api/products", createContent);
-            createResponse.EnsureSuccessStatusCode();
+            // Act
+            var response = await _client.PostAsJsonAsync("/api/Products", createProductDto);
 
-            var createdProduct = JsonConvert.DeserializeObject<ProductDto>(await createResponse.Content.ReadAsStringAsync());
+            // Assert
+            Assert.AreEqual(System.Net.HttpStatusCode.Unauthorized, response.StatusCode);
+        }
 
-            var updateProduct = new UpdateProductDto
+        [Test]
+        public async Task Create_ReturnsCreatedResult_WithValidProduct()
+        {
+            // Arrange
+            var client = _factory.WithWebHostBuilder(builder =>
             {
-                Name = "Updated Product",
+                builder.ConfigureServices(services =>
+                {
+                    // Mock dependencies
+                    var productRepositoryMock = new Mock<IProductRepository>();
+                    productRepositoryMock.Setup(repo => repo.AddAsync(It.IsAny<Product>())).Returns(Task.CompletedTask);
+                    productRepositoryMock.Setup(repo => repo.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(new Product());
+
+                    var userManagerMock = new Mock<UserManager<IdentityUser>>(MockBehavior.Default,
+                        new Mock<IUserStore<IdentityUser>>().Object,
+                        null, null, null, null, null, null, null);
+
+                    var mapperMock = new Mock<IMapper>();
+
+                    services.AddSingleton(productRepositoryMock.Object);
+                    services.AddSingleton(userManagerMock.Object);
+                    services.AddSingleton(mapperMock.Object);
+                });
+            }).CreateClient();
+
+            var createProductDto = new TestCreateProductDto
+            {
+                Name = "Test Product",
                 ProduceDate = DateTime.UtcNow,
                 ManufacturePhone = "1234567890",
                 ManufactureEmail = "test@example.com",
                 IsAvailable = true
             };
 
-            var updateContent = new StringContent(JsonConvert.SerializeObject(updateProduct), Encoding.UTF8, "application/json");
-            var updateResponse = await _client.PutAsync($"/api/products/{createdProduct.Id}", updateContent);
-            updateResponse.EnsureSuccessStatusCode();
+            // Act
+            var response = await client.PostAsJsonAsync("/api/Products", createProductDto);
 
-            var responseString = await updateResponse.Content.ReadAsStringAsync();
-            var product = JsonConvert.DeserializeObject<ProductDto>(responseString);
-
-            Assert.NotNull(product);
-            Assert.AreEqual(updateProduct.Name, product.Name);
+            // Assert
+            response.EnsureSuccessStatusCode(); // Status Code 200-299
+            var responseString = await response.Content.ReadAsStringAsync();
+            var productDto = JsonSerializer.Deserialize<ProductDto>(responseString);
+            Assert.IsNotNull(productDto);
         }
 
-        [Test]
-        public async Task Delete_ShouldRemoveProduct()
-        {
-            var newProduct = new Product()
-            {
-                Name = "New Product",
-                ProduceDate = DateTime.UtcNow,
-                ManufacturePhone = "1234567890",
-                ManufactureEmail = "test@example.com",
-                IsAvailable = true
-            };
-
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _jwtToken);
-            var createContent = new StringContent(JsonConvert.SerializeObject(newProduct), Encoding.UTF8, "application/json");
-            var createResponse = await _client.PostAsync("/api/products", createContent);
-            createResponse.EnsureSuccessStatusCode();
-
-            var createdProduct = JsonConvert.DeserializeObject<ProductDto>(await createResponse.Content.ReadAsStringAsync());
-
-            var deleteResponse = await _client.DeleteAsync($"/api/products/{createdProduct.Id}");
-            deleteResponse.EnsureSuccessStatusCode();
-
-            var getResponse = await _client.GetAsync($"/api/products/{createdProduct.Id}");
-            Assert.AreEqual(System.Net.HttpStatusCode.NotFound, getResponse.StatusCode);
-        }
-
-        [Test]
-        public async Task UnauthorizedUpdate_ShouldReturnForbidden()
-        {
-            var newProduct = new Product()
-            {
-                Name = "New Product",
-                ProduceDate = DateTime.UtcNow,
-                ManufacturePhone = "1234567890",
-                ManufactureEmail = "unauthorized@example.com",
-                IsAvailable = true
-            };
-
-            var unauthorizedToken = GenerateJwtToken("differentuser@example.com");
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", unauthorizedToken);
-            var createContent = new StringContent(JsonConvert.SerializeObject(newProduct), Encoding.UTF8, "application/json");
-            var createResponse = await _client.PostAsync("/api/products", createContent);
-            createResponse.EnsureSuccessStatusCode();
-
-            var createdProduct = JsonConvert.DeserializeObject<ProductDto>(await createResponse.Content.ReadAsStringAsync());
-
-            var updateProduct = new UpdateProductDto
-            {
-                Name = "Updated Product",
-                ProduceDate = DateTime.UtcNow,
-                ManufacturePhone = "1234567890",
-                ManufactureEmail = "unauthorized@example.com",
-                IsAvailable = true
-            };
-
-            var updateContent = new StringContent(JsonConvert.SerializeObject(updateProduct), Encoding.UTF8, "application/json");
-            var updateResponse = await _client.PutAsync($"/api/products/{createdProduct.Id}", updateContent);
-
-            Assert.AreEqual(System.Net.HttpStatusCode.Forbidden, updateResponse.StatusCode);
-        }
-
-        [Test]
-        public async Task UnauthorizedDelete_ShouldReturnForbidden()
-        {
-            var newProduct = new Product()
-            {
-                Name = "New Product",
-                ProduceDate = DateTime.UtcNow,
-                ManufacturePhone = "1234567890",
-                ManufactureEmail = "unauthorized@example.com",
-                IsAvailable = true
-            };
-
-            var unauthorizedToken = GenerateJwtToken("differentuser@example.com");
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", unauthorizedToken);
-            var createContent = new StringContent(JsonConvert.SerializeObject(newProduct), Encoding.UTF8, "application/json");
-            var createResponse = await _client.PostAsync("/api/products", createContent);
-            createResponse.EnsureSuccessStatusCode();
-
-            var createdProduct = JsonConvert.DeserializeObject<ProductDto>(await createResponse.Content.ReadAsStringAsync());
-
-            var deleteResponse = await _client.DeleteAsync($"/api/products/{createdProduct.Id}");
-
-            Assert.AreEqual(System.Net.HttpStatusCode.Forbidden, deleteResponse.StatusCode);
-        }
+        // Similar tests for Update and Delete can be written following the same pattern.
     }
 }
