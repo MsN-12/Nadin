@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "lBp3XTM1NfFISQCMFLhOJUNH31oTGwsCrxo3iz0sEkw=",
+  "Source": "Nadin.WebAPI",
+  "BasePath": "_content/Nadin.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,13 @@
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\bin\Debug\net8.0\Nadin.Core.deps.json
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\bin\Debug\net8.0\Nadin.Core.dll
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\bin\Debug\net8.0\Nadin.Core.pdb
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\obj\Debug\net8.0\Nadin.Core.csproj.AssemblyReference.cache
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\obj\Debug\net8.0\Nadin.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\obj\Debug\net8.0\Nadin.Core.AssemblyInfoInputs.cache
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\obj\Debug\net8.0\Nadin.Core.AssemblyInfo.cs
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\obj\Debug\net8.0\Nadin.Core.csproj.CoreCompileInputs.cache
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\obj\Debug\net8.0\Nadin.Core.sourcelink.json
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\obj\Debug\net8.0\Nadin.Core.dll
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\obj\Debug\net8.0\refint\Nadin.Core.dll
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\obj\Debug\net8.0\Nadin.Core.pdb
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.Core\obj\Debug\net8.0\ref\Nadin.Core.dll
