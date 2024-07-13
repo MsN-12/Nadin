@@ -1,5 +1,5 @@
 using AutoMapper;
-using Nadin.Core.Entities;
+using Nadin.Domain.Entities;
 using Nadin.Application.DTOs;
 
 namespace Nadin.Application.MappingProfiles

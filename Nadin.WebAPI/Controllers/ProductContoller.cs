@@ -1,3 +1,5 @@
+// using System.Security.Claims;
+
 using System.Security.Claims;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -5,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Nadin.Application.DTOs;
 using Nadin.Application.Interfaces;
-using Nadin.Core.Entities;
+using Nadin.Domain.Entities;
 
 namespace Nadin.WebAPI.Controllers
 {

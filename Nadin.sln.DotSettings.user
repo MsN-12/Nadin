@@ -5,5 +5,8 @@
     &lt;TestId&gt;NUnit3x::D5C11A0E-6862-421B-A18B-B835506F181F::net8.0::Integration.Test.ProductsControllerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::D5C11A0E-6862-421B-A18B-B835506F181F::net8.0::Integration.Test.ProductsControllerIntegrationTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::D5C11A0E-6862-421B-A18B-B835506F181F::net8.0::ProductsControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::D5C11A0E-6862-421B-A18B-B835506F181F::net8.0::AuthControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::D5C11A0E-6862-421B-A18B-B835506F181F::net8.0::Integration.Test.AuthControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::D5C11A0E-6862-421B-A18B-B835506F181F::net8.0::Integration.Test.AuthContollerTests.AuthControllerTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

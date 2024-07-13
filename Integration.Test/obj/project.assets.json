@@ -2226,8 +2226,8 @@
           "Microsoft.EntityFrameworkCore": "8.0.6",
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.6",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
-          "Nadin.Core": "1.0.0",
-          "Nadin.Infrastructure": "1.0.0",
+          "Nadin.Domain": "1.0.0",
+          "Nadin.Persistence": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "compile": {
@@ -2237,7 +2237,7 @@
           "bin/placeholder/Nadin.Application.dll": {}
         }
       },
-      "Nadin.Core/1.0.0": {
+      "Nadin.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -2249,13 +2249,13 @@
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "compile": {
-          "bin/placeholder/Nadin.Core.dll": {}
+          "bin/placeholder/Nadin.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Nadin.Core.dll": {}
+          "bin/placeholder/Nadin.Domain.dll": {}
         }
       },
-      "Nadin.Infrastructure/1.0.0": {
+      "Nadin.Persistence/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -2265,14 +2265,14 @@
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.6",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
-          "Nadin.Core": "1.0.0",
+          "Nadin.Domain": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "compile": {
-          "bin/placeholder/Nadin.Infrastructure.dll": {}
+          "bin/placeholder/Nadin.Persistence.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Nadin.Infrastructure.dll": {}
+          "bin/placeholder/Nadin.Persistence.dll": {}
         }
       },
       "Nadin.WebAPI/1.0.0": {
@@ -2288,7 +2288,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.6",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
           "Nadin.Application": "1.0.0",
-          "Nadin.Infrastructure": "1.0.0",
+          "Nadin.Persistence": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0",
           "Swashbuckle.AspNetCore.Filters": "8.0.2",
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
@@ -5801,15 +5801,15 @@
       "path": "../Nadin.Application/Nadin.Application.csproj",
       "msbuildProject": "../Nadin.Application/Nadin.Application.csproj"
     },
-    "Nadin.Core/1.0.0": {
+    "Nadin.Domain/1.0.0": {
       "type": "project",
-      "path": "../Nadin.Core/Nadin.Core.csproj",
-      "msbuildProject": "../Nadin.Core/Nadin.Core.csproj"
+      "path": "../Nadin.Domain/Nadin.Domain.csproj",
+      "msbuildProject": "../Nadin.Domain/Nadin.Domain.csproj"
     },
-    "Nadin.Infrastructure/1.0.0": {
+    "Nadin.Persistence/1.0.0": {
       "type": "project",
-      "path": "../Nadin.Infrastructure/Nadin.Infrastructure.csproj",
-      "msbuildProject": "../Nadin.Infrastructure/Nadin.Infrastructure.csproj"
+      "path": "../Nadin.Persistence/Nadin.Persistence.csproj",
+      "msbuildProject": "../Nadin.Persistence/Nadin.Persistence.csproj"
     },
     "Nadin.WebAPI/1.0.0": {
       "type": "project",
@@ -5822,12 +5822,13 @@
       "AutoMapper >= 13.0.1",
       "Microsoft.AspNetCore.Mvc.Testing >= 8.0.6",
       "Microsoft.EntityFrameworkCore.InMemory >= 8.0.6",
+      "Microsoft.Extensions.Configuration.Abstractions >= 8.0.0",
       "Microsoft.IdentityModel.Tokens >= 7.6.2",
       "Microsoft.NET.Test.Sdk >= 17.6.0",
       "Moq >= 4.20.70",
       "Nadin.Application >= 1.0.0",
-      "Nadin.Core >= 1.0.0",
-      "Nadin.Infrastructure >= 1.0.0",
+      "Nadin.Domain >= 1.0.0",
+      "Nadin.Persistence >= 1.0.0",
       "Nadin.WebAPI >= 1.0.0",
       "System.IdentityModel.Tokens.Jwt >= 7.6.2",
       "coverlet.collector >= 6.0.0",
@@ -5867,11 +5868,11 @@
             "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Application\\Nadin.Application.csproj": {
               "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Application\\Nadin.Application.csproj"
             },
-            "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Core\\Nadin.Core.csproj": {
-              "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Core\\Nadin.Core.csproj"
+            "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Domain\\Nadin.Domain.csproj": {
+              "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Domain\\Nadin.Domain.csproj"
             },
-            "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Infrastructure\\Nadin.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Infrastructure\\Nadin.Infrastructure.csproj"
+            "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Persistence\\Nadin.Persistence.csproj": {
+              "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Persistence\\Nadin.Persistence.csproj"
             },
             "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.WebAPI\\Nadin.WebAPI.csproj": {
               "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.WebAPI\\Nadin.WebAPI.csproj"
@@ -5900,6 +5901,10 @@
           "Microsoft.EntityFrameworkCore.InMemory": {
             "target": "Package",
             "version": "[8.0.6, )"
+          },
+          "Microsoft.Extensions.Configuration.Abstractions": {
+            "target": "Package",
+            "version": "[8.0.0, )"
           },
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",

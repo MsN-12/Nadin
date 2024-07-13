@@ -13,8 +13,8 @@
           "Microsoft.EntityFrameworkCore": "8.0.6",
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.6",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
-          "Nadin.Core": "1.0.0",
-          "Nadin.Infrastructure": "1.0.0",
+          "Nadin.Domain": "1.0.0",
+          "Nadin.Persistence": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "runtime": {
@@ -624,7 +624,7 @@
           }
         }
       },
-      "Nadin.Core/1.0.0": {
+      "Nadin.Domain/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.6",
@@ -634,10 +634,10 @@
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "runtime": {
-          "Nadin.Core.dll": {}
+          "Nadin.Domain.dll": {}
         }
       },
-      "Nadin.Infrastructure/1.0.0": {
+      "Nadin.Persistence/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.6",
@@ -645,11 +645,11 @@
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.6",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
-          "Nadin.Core": "1.0.0",
+          "Nadin.Domain": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "runtime": {
-          "Nadin.Infrastructure.dll": {}
+          "Nadin.Persistence.dll": {}
         }
       }
     }
@@ -1059,12 +1059,12 @@
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
-    "Nadin.Core/1.0.0": {
+    "Nadin.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Nadin.Infrastructure/1.0.0": {
+    "Nadin.Persistence/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

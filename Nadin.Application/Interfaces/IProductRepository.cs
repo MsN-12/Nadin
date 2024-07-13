@@ -1,4 +1,4 @@
-using Nadin.Core.Entities;
+using Nadin.Domain.Entities;
 
 namespace Nadin.Application.Interfaces
 {

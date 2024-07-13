@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Nadin.Application.Interfaces;
 using Nadin.Application.Services;
-using Nadin.Infrastructure.Data;
+using Nadin.Persistence.Data;
 using Nadin.Application.MappingProfiles;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -43,12 +43,6 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.AddAuthorization();
-// builder.Services.AddScoped<AppDbContext>(provider =>
-// {
-//     var context = provider.GetRequiredService<AppDbContext>();
-//     SeedData.Initialize(context);
-//     return context;
-// });
 builder.Services.AddControllers();
 
 builder.Services.AddSwaggerGen(options =>
@@ -66,7 +60,21 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddCors();
 
 var app = builder.Build();
-
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<AppDbContext>();
+        context.Database.Migrate();
+        SeedData.Initialize(context);
+    }
+    catch (Exception e)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(e,"An error occurred seeding the DB.");
+    }
+}
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();

@@ -1,6 +1,6 @@
-using Nadin.Core.Entities;
+using Nadin.Domain.Entities;
 using Nadin.Application.Interfaces;
-using Nadin.Infrastructure.Data;
+using Nadin.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Nadin.Application.Services

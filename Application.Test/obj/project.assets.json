@@ -1433,8 +1433,8 @@
           "Microsoft.EntityFrameworkCore": "8.0.6",
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.6",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
-          "Nadin.Core": "1.0.0",
-          "Nadin.Infrastructure": "1.0.0",
+          "Nadin.Domain": "1.0.0",
+          "Nadin.Persistence": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "compile": {
@@ -1444,7 +1444,7 @@
           "bin/placeholder/Nadin.Application.dll": {}
         }
       },
-      "Nadin.Core/1.0.0": {
+      "Nadin.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -1456,13 +1456,13 @@
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "compile": {
-          "bin/placeholder/Nadin.Core.dll": {}
+          "bin/placeholder/Nadin.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Nadin.Core.dll": {}
+          "bin/placeholder/Nadin.Domain.dll": {}
         }
       },
-      "Nadin.Infrastructure/1.0.0": {
+      "Nadin.Persistence/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -1472,14 +1472,14 @@
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.6",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
-          "Nadin.Core": "1.0.0",
+          "Nadin.Domain": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "compile": {
-          "bin/placeholder/Nadin.Infrastructure.dll": {}
+          "bin/placeholder/Nadin.Persistence.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Nadin.Infrastructure.dll": {}
+          "bin/placeholder/Nadin.Persistence.dll": {}
         }
       }
     }
@@ -3694,15 +3694,15 @@
       "path": "../Nadin.Application/Nadin.Application.csproj",
       "msbuildProject": "../Nadin.Application/Nadin.Application.csproj"
     },
-    "Nadin.Core/1.0.0": {
+    "Nadin.Domain/1.0.0": {
       "type": "project",
-      "path": "../Nadin.Core/Nadin.Core.csproj",
-      "msbuildProject": "../Nadin.Core/Nadin.Core.csproj"
+      "path": "../Nadin.Domain/Nadin.Domain.csproj",
+      "msbuildProject": "../Nadin.Domain/Nadin.Domain.csproj"
     },
-    "Nadin.Infrastructure/1.0.0": {
+    "Nadin.Persistence/1.0.0": {
       "type": "project",
-      "path": "../Nadin.Infrastructure/Nadin.Infrastructure.csproj",
-      "msbuildProject": "../Nadin.Infrastructure/Nadin.Infrastructure.csproj"
+      "path": "../Nadin.Persistence/Nadin.Persistence.csproj",
+      "msbuildProject": "../Nadin.Persistence/Nadin.Persistence.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3715,8 +3715,8 @@
       "NUnit.Analyzers >= 3.6.1",
       "NUnit3TestAdapter >= 4.2.1",
       "Nadin.Application >= 1.0.0",
-      "Nadin.Core >= 1.0.0",
-      "Nadin.Infrastructure >= 1.0.0",
+      "Nadin.Domain >= 1.0.0",
+      "Nadin.Persistence >= 1.0.0",
       "System.IdentityModel.Tokens.Jwt >= 7.6.2",
       "coverlet.collector >= 6.0.0"
     ]
@@ -3752,11 +3752,11 @@
             "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Application\\Nadin.Application.csproj": {
               "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Application\\Nadin.Application.csproj"
             },
-            "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Core\\Nadin.Core.csproj": {
-              "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Core\\Nadin.Core.csproj"
+            "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Domain\\Nadin.Domain.csproj": {
+              "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Domain\\Nadin.Domain.csproj"
             },
-            "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Infrastructure\\Nadin.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Infrastructure\\Nadin.Infrastructure.csproj"
+            "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Persistence\\Nadin.Persistence.csproj": {
+              "projectPath": "C:\\Users\\Markazi\\RiderProjects\\Nadin\\Nadin.Persistence\\Nadin.Persistence.csproj"
             }
           }
         }

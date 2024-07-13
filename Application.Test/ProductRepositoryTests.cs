@@ -3,8 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Nadin.Application.Interfaces;
 using Nadin.Application.Services;
-using Nadin.Core.Entities;
-using Nadin.Infrastructure.Data;
+using Nadin.Domain.Entities;
+using Nadin.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 

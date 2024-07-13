@@ -18,7 +18,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.6",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
           "Nadin.Application": "1.0.0",
-          "Nadin.Infrastructure": "1.0.0",
+          "Nadin.Persistence": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0",
           "Swashbuckle.AspNetCore.Filters": "8.0.2",
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
@@ -1038,15 +1038,15 @@
           "Microsoft.EntityFrameworkCore": "8.0.6",
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.6",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
-          "Nadin.Core": "1.0.0",
-          "Nadin.Infrastructure": "1.0.0",
+          "Nadin.Domain": "1.0.0",
+          "Nadin.Persistence": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "runtime": {
           "Nadin.Application.dll": {}
         }
       },
-      "Nadin.Core/1.0.0": {
+      "Nadin.Domain/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.6",
@@ -1056,10 +1056,10 @@
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "runtime": {
-          "Nadin.Core.dll": {}
+          "Nadin.Domain.dll": {}
         }
       },
-      "Nadin.Infrastructure/1.0.0": {
+      "Nadin.Persistence/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.6",
@@ -1067,11 +1067,11 @@
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.6",
           "Microsoft.IdentityModel.Tokens": "7.6.2",
-          "Nadin.Core": "1.0.0",
+          "Nadin.Domain": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.6.2"
         },
         "runtime": {
-          "Nadin.Infrastructure.dll": {}
+          "Nadin.Persistence.dll": {}
         }
       }
     }
@@ -1703,12 +1703,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Nadin.Core/1.0.0": {
+    "Nadin.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Nadin.Infrastructure/1.0.0": {
+    "Nadin.Persistence/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

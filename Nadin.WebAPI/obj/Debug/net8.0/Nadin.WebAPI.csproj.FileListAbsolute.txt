@@ -58,11 +58,7 @@ C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\runtimes\win\
 C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Nadin.Application.dll
-C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Nadin.Core.dll
-C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Nadin.Infrastructure.dll
 C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Nadin.Application.pdb
-C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Nadin.Infrastructure.pdb
-C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Nadin.Core.pdb
 C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\obj\Debug\net8.0\Nadin.WebAPI.csproj.AssemblyReference.cache
 C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\obj\Debug\net8.0\Nadin.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\obj\Debug\net8.0\Nadin.WebAPI.AssemblyInfoInputs.cache
@@ -154,3 +150,7 @@ C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\zh-Hant\Micro
 C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Scrutor.dll
 C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
 C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Nadin.Domain.dll
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Nadin.Persistence.dll
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Nadin.Persistence.pdb
+C:\Users\Markazi\RiderProjects\Nadin\Nadin.WebAPI\bin\Debug\net8.0\Nadin.Domain.pdb

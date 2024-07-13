@@ -23,8 +23,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Nadin.Application\Nadin.Application.csproj" />
-      <ProjectReference Include="..\Nadin.Core\Nadin.Core.csproj" />
-      <ProjectReference Include="..\Nadin.Infrastructure\Nadin.Infrastructure.csproj" />
+      <ProjectReference Include="..\Nadin.Domain\Nadin.Domain.csproj" />
+      <ProjectReference Include="..\Nadin.Persistence\Nadin.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

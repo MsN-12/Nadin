@@ -4,9 +4,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6CD03A6D-AEA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nadin.Application", "Nadin.Application\Nadin.Application.csproj", "{007468A8-DBDA-4138-80EB-92F23CB9257F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nadin.Core", "Nadin.Core\Nadin.Core.csproj", "{5A4665AD-6D06-41D4-8E6A-32D03F0339CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nadin.Domain", "Nadin.Domain\Nadin.Domain.csproj", "{5A4665AD-6D06-41D4-8E6A-32D03F0339CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nadin.Infrastructure", "Nadin.Infrastructure\Nadin.Infrastructure.csproj", "{08006444-EF20-4772-8525-07FE13863C21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nadin.Persistence", "Nadin.Persistence\Nadin.Persistence.csproj", "{08006444-EF20-4772-8525-07FE13863C21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nadin.WebAPI", "Nadin.WebAPI\Nadin.WebAPI.csproj", "{E9123665-85D6-476D-BE4E-38E26B320755}"
 EndProject
